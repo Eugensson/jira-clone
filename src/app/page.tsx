@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 
 const Home = () => {
   return (
-    <div className="p-10">
+    <div>
       <Button>Primary</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="destructive">Destructive</Button>
