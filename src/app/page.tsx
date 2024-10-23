@@ -1,28 +1,9 @@
-"use client";
-
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-
-import { Button } from "@/components/ui/button";
-import { useLogout } from "@/features/auth/api/use-logout";
-import { useCurrent } from "@/features/auth/api/use-current";
+import { UserButton } from "@/features/auth/components/user-button";
 
 const Home = () => {
-  const router = useRouter();
-
-  const { data, isLoading } = useCurrent();
-  const { mutate } = useLogout();
-
-  useEffect(() => {
-    if (!data && !isLoading) {
-      router.push("/sign-in");
-    }
-  }, [data, isLoading, router]);
-
   return (
-    <div>
-      Only visible to authorize users
-      <Button onClick={() => mutate()}>Logout</Button>
+    <div className="p-10">
+      <UserButton />
     </div>
   );
 };
