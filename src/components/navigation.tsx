@@ -12,6 +12,8 @@ import { SettingsIcon, UsersIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
+import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
+
 const routes = [
   {
     label: "Home",
@@ -41,15 +43,18 @@ const routes = [
 
 export const Navigation = () => {
   const pathname = usePathname();
+  const workspaceId = useWorkspaceId();
 
   return (
     <ul>
-      {routes.map(({ label, href, icon: Icon, activeIcon: ActiveIcon }) => {
-        const isActive = href === pathname;
+      {routes.map((item) => {
+        const fullHref = `/workspaces/${workspaceId}${item.href}`;
+        const isActive = pathname === fullHref;
+        const Icon = isActive ? item.activeIcon : item.icon;
 
         return (
-          <li key={label}>
-            <Link href={href}>
+          <li key={item.href}>
+            <Link href={fullHref}>
               <div
                 className={cn(
                   "flex items-center gap-2.5 p-2.5 rounded-md font-medium hover:text-primary transition-colors text-neutral-500",
@@ -57,12 +62,8 @@ export const Navigation = () => {
                     "bg-white shadow-sm hover:opacity-100 text-primary"
                 )}
               >
-                {isActive ? (
-                  <ActiveIcon className="size-5 text-neutral-500" />
-                ) : (
-                  <Icon className="size-5 text-neutral-500" />
-                )}
-                {label}
+                <Icon className="size-5 text-neutral-500" />
+                {item.label}
               </div>
             </Link>
           </li>
