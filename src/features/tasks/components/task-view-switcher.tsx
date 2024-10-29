@@ -14,6 +14,7 @@ import { columns } from "@/features/tasks/components/columns";
 import { useGetTasks } from "@/features/tasks/api/use-get-tasks";
 import { DataTable } from "@/features/tasks/components/data-table";
 import { DataKanban } from "@/features/tasks/components/data-kanban";
+import { DataCalendar } from "@/features/tasks/components/data-calendar";
 import { useTaskFilters } from "@/features/tasks/hooks/use-task-filters";
 import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 import { useBulkUpdateTasks } from "@/features/tasks/api/use-bulk-update-tasks";
@@ -94,8 +95,8 @@ export const TaskViewSwitcher = () => {
                 data={tasks?.documents ?? []}
               />
             </TabsContent>
-            <TabsContent value="calendar" className="mt-0">
-              {JSON.stringify(tasks)}
+            <TabsContent value="calendar" className="mt-0 h-full pb-4">
+              <DataCalendar data={tasks?.documents ?? []} />
             </TabsContent>
           </>
         )}
