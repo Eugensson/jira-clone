@@ -1,13 +1,14 @@
+import React from "react";
 import { useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
+import { Member } from "@/features/members/types";
 import { Project } from "@/features/projects/types";
 import { TaskStatus } from "@/features/tasks/types";
 import { MemberAvatar } from "@/features/members/components/member-avatar";
 import { ProjectAvatar } from "@/features/projects/components/project-avatar";
 import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
-import React from "react";
 
 const statusColorMap: Record<TaskStatus, string> = {
   [TaskStatus.BACKLOG]: "border-l-pink-500",
@@ -20,8 +21,7 @@ const statusColorMap: Record<TaskStatus, string> = {
 interface EventCardProps {
   id: string;
   title: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  assignee: any;
+  assignee: Member;
   project: Project;
   status: TaskStatus;
 }

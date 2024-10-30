@@ -28,6 +28,8 @@ import { DottedSeparator } from "@/components/dotted-separator";
 import { registerSchema } from "@/features/auth/schemas";
 import { useRegister } from "@/features/auth/api/use-register";
 
+import { signUpWithGithub, signUpWithGoogle } from "@/lib/oauth";
+
 export const SignUpCard = () => {
   const { mutate, isPending } = useRegister();
 
@@ -127,6 +129,7 @@ export const SignUpCard = () => {
       </div>
       <CardContent className="p-4 flex gap-y-4">
         <Button
+          onClick={() => signUpWithGoogle()}
           disabled={isPending}
           variant="secondary"
           size="lg"
@@ -136,6 +139,7 @@ export const SignUpCard = () => {
           Login with Google
         </Button>
         <Button
+          onClick={() => signUpWithGithub()}
           disabled={isPending}
           variant="secondary"
           size="lg"

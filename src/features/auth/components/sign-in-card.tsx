@@ -22,6 +22,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { loginSchema } from "@/features/auth/schemas";
 import { useLogin } from "@/features/auth/api/use-login";
 
+import { signUpWithGithub, signUpWithGoogle } from "@/lib/oauth";
+
 export const SignInCard = () => {
   const { mutate, isPending } = useLogin();
 
@@ -93,6 +95,7 @@ export const SignInCard = () => {
       </div>
       <CardContent className="p-4 flex gap-y-4">
         <Button
+          onClick={() => signUpWithGoogle()}
           disabled={isPending}
           variant="secondary"
           size="lg"
@@ -102,6 +105,7 @@ export const SignInCard = () => {
           Login with Google
         </Button>
         <Button
+          onClick={() => signUpWithGithub()}
           disabled={isPending}
           variant="secondary"
           size="lg"

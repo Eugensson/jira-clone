@@ -1,8 +1,7 @@
 import "server-only";
 
 import { cookies } from "next/headers";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Client, Account, Storage, Users, Databases } from "node-appwrite";
+import { Client, Account, Users, Databases } from "node-appwrite";
 
 import { AUTH_COOKIE } from "@/features/auth/constants";
 
